@@ -8,15 +8,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
   <style>
-    /* ===== PROFESSIONAL RESET ===== */
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --bg: #0f0f13;           /* dark professional */
+      --bg: #0f0f13;
       --surface: #1a1a22;
       --surface-2: #252530;
       --border: rgba(255, 255, 255, 0.08);
-      --accent: #3b82f6;        /* clean blue */
+      --accent: #3b82f6;
       --accent-soft: rgba(59, 130, 246, 0.15);
       --text: #ffffff;
       --text-2: #9ca3af;
@@ -33,58 +32,32 @@
       line-height: 1.6;
     }
 
-    /* ===== SCREENS ===== */
     .screen { display: none; min-height: 100vh; position: relative; }
     .screen.active { display: flex; flex-direction: column; }
 
-    /* ===== BACK BUTTON - HAR SCREEN PAR ===== */
     .screen-header {
-      display: flex;
-      align-items: center;
-      padding: 16px 24px;
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 0;
-      z-index: 10;
+      display: flex; align-items: center; padding: 16px 24px;
+      background: var(--surface); border-bottom: 1px solid var(--border);
+      position: sticky; top: 0; z-index: 10;
     }
 
     .back-btn {
-      background: none;
-      border: none;
-      color: var(--text);
-      font-size: 24px;
-      cursor: pointer;
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 8px;
-      margin-right: 16px;
+      background: none; border: none; color: var(--text); font-size: 24px;
+      cursor: pointer; width: 40px; height: 40px; display: flex;
+      align-items: center; justify-content: center; border-radius: 8px; margin-right: 16px;
     }
+    .back-btn:hover { background: var(--surface-2); }
+    .screen-title { font-size: 18px; font-weight: 600; flex: 1; }
 
-    .back-btn:hover {
-      background: var(--surface-2);
-    }
-
-    .screen-title {
-      font-size: 18px;
-      font-weight: 600;
-      flex: 1;
-    }
-
-    /* ===== PROFESSIONAL COMPONENTS ===== */
     .btn {
       display: inline-flex; align-items: center; justify-content: center; gap: 8px;
       padding: 10px 20px; border-radius: 8px; border: 1px solid var(--border);
       font-weight: 500; font-size: 14px; cursor: pointer; transition: all 0.15s;
       background: var(--surface); color: var(--text-2); text-decoration: none;
+      font-family: 'Inter', sans-serif;
     }
     .btn:hover { background: var(--surface-2); color: var(--text); border-color: var(--accent); }
-    .btn-primary {
-      background: var(--accent); color: white; border: none;
-    }
+    .btn-primary { background: var(--accent); color: white; border: none; }
     .btn-primary:hover { background: #2563eb; color: white; }
     .btn-sm { padding: 6px 14px; font-size: 13px; }
 
@@ -93,23 +66,18 @@
     .input-field {
       background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
       padding: 12px 16px; color: var(--text); font-size: 14px; outline: none;
-      transition: border-color 0.15s;
+      transition: border-color 0.15s; font-family: 'Inter', sans-serif; width: 100%;
     }
     .input-field:focus { border-color: var(--accent); }
-
-    /* AUTOCOMPLETE OFF - YEH FIX HAI */
     .input-field:-webkit-autofill,
     .input-field:-webkit-autofill:hover,
-    .input-field:-webkit-autofill:focus,
-    .input-field:-webkit-autofill:active {
+    .input-field:-webkit-autofill:focus {
       -webkit-box-shadow: 0 0 0 30px var(--surface) inset !important;
       -webkit-text-fill-color: var(--text) !important;
-      caret-color: var(--text);
-      background-color: var(--surface) !important;
       transition: background-color 5000s ease-in-out 0s;
     }
 
-    /* ===== HOME SCREEN (minimal) ===== */
+    /* HOME */
     #homeScreen { align-items: center; justify-content: center; }
     .home-content { max-width: 400px; text-align: center; padding: 20px; }
     .home-logo {
@@ -121,7 +89,7 @@
     .home-desc { color: var(--text-2); font-size: 15px; margin-bottom: 32px; }
     .home-actions { display: flex; gap: 12px; justify-content: center; }
 
-    /* ===== PIN SCREEN ===== */
+    /* PIN */
     #pinScreen { align-items: center; justify-content: center; }
     .pin-card {
       background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
@@ -134,23 +102,17 @@
     }
     .pin-avatar img { width: 100%; height: 100%; object-fit: cover; }
     .pin-dots { display: flex; gap: 8px; justify-content: center; margin: 24px 0 20px; }
-    .pin-dot {
-      width: 12px; height: 12px; border-radius: 50%; background: var(--surface-2);
-      transition: all 0.15s;
-    }
+    .pin-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--surface-2); transition: all 0.15s; }
     .pin-dot.filled { background: var(--accent); }
-    .numpad {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;
-    }
+    .numpad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
     .num-btn {
       aspect-ratio: 1; background: var(--surface-2); border: none; border-radius: 8px;
-      color: var(--text); font-size: 18px; font-weight: 500; cursor: pointer;
-      transition: all 0.1s;
+      color: var(--text); font-size: 18px; font-weight: 500; cursor: pointer; transition: all 0.1s;
     }
     .num-btn:active { background: var(--accent); transform: scale(0.96); }
     .num-btn.enter-btn { background: var(--accent); color: white; }
 
-    /* ===== DASHBOARD ===== */
+    /* DASHBOARD */
     .topbar {
       display: flex; align-items: center; justify-content: space-between;
       padding: 12px 24px; background: var(--surface); border-bottom: 1px solid var(--border);
@@ -158,80 +120,67 @@
     .topbar-logo { display: flex; align-items: center; gap: 8px; font-weight: 600; }
     .topbar-avatar {
       width: 36px; height: 36px; border-radius: 8px; background: var(--surface-2);
-      display: flex; align-items: center; justify-content: center; cursor: pointer;
-      overflow: hidden;
+      display: flex; align-items: center; justify-content: center; cursor: pointer; overflow: hidden;
     }
     .topbar-avatar img { width: 100%; height: 100%; object-fit: cover; }
 
-    /* tabs - clean */
     .tabs {
       display: flex; gap: 4px; padding: 16px 24px; background: var(--surface);
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid var(--border); overflow-x: auto;
     }
     .tab-btn {
       padding: 8px 16px; border-radius: 6px; background: transparent; border: none;
       color: var(--text-2); font-size: 14px; font-weight: 500; cursor: pointer;
+      white-space: nowrap; font-family: 'Inter', sans-serif;
     }
     .tab-btn.active { background: var(--accent-soft); color: var(--accent); }
 
-    /* content area */
     .content-area { padding: 24px; max-width: 1200px; margin: 0 auto; width: 100%; }
     .section-panel { display: none; }
     .section-panel.active { display: block; }
 
-    /* upload zone - minimal */
     .upload-zone {
       background: var(--surface); border: 2px dashed var(--border); border-radius: 12px;
       padding: 32px; text-align: center; margin-bottom: 24px; cursor: pointer;
     }
     .upload-zone:hover { border-color: var(--accent); }
 
-    /* file grids - compact professional */
-    .grid-4 {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px;
-    }
+    .grid-4 { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; }
 
     .file-card {
       background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
       overflow: hidden; transition: all 0.15s; position: relative;
     }
     .file-card:hover { border-color: var(--accent); transform: translateY(-2px); }
-
     .file-thumb {
       aspect-ratio: 1; background: var(--surface-2); display: flex;
       align-items: center; justify-content: center; font-size: 32px;
     }
     .file-thumb img, .file-thumb video { width: 100%; height: 100%; object-fit: cover; }
-
     .file-info { padding: 10px; }
     .file-name { font-size: 13px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .file-meta { font-size: 11px; color: var(--text-3); margin-top: 2px; }
-
     .file-delete {
       position: absolute; top: 8px; right: 8px; background: rgba(0,0,0,0.7);
       border: none; border-radius: 4px; color: var(--danger); padding: 4px 8px;
-      font-size: 12px; cursor: pointer; opacity: 0; transition: opacity 0.15s;
-      z-index: 5;
+      font-size: 12px; cursor: pointer; opacity: 0; transition: opacity 0.15s; z-index: 5;
     }
     .file-card:hover .file-delete { opacity: 1; }
 
-    /* list view for files */
-    .list-view {
-      display: flex; flex-direction: column; gap: 8px;
-    }
+    .list-view { display: flex; flex-direction: column; gap: 8px; }
     .list-item {
       background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
       padding: 12px 16px; display: flex; align-items: center; gap: 16px;
     }
     .list-icon {
       width: 40px; height: 40px; background: var(--surface-2); border-radius: 6px;
-      display: flex; align-items: center; justify-content: center; font-size: 18px;
+      display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0;
     }
-    .list-info { flex: 1; }
-    .list-name { font-size: 14px; font-weight: 500; }
+    .list-info { flex: 1; min-width: 0; }
+    .list-name { font-size: 14px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .list-meta { font-size: 12px; color: var(--text-3); }
 
-    /* profile screen */
+    /* PROFILE */
     .profile-header {
       padding: 24px; background: var(--surface); border-bottom: 1px solid var(--border);
       display: flex; align-items: center; gap: 16px;
@@ -243,9 +192,7 @@
       margin: 0 auto 16px; overflow: hidden; border: 2px solid var(--border); cursor: pointer;
     }
     .profile-avatar img { width: 100%; height: 100%; object-fit: cover; }
-    .profile-stats {
-      display: flex; gap: 12px; justify-content: center; margin: 24px 0;
-    }
+    .profile-stats { display: flex; gap: 12px; justify-content: center; margin: 24px 0; }
     .stat-item {
       background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
       padding: 16px; text-align: center; flex: 1;
@@ -254,8 +201,7 @@
     .stat-label { font-size: 12px; color: var(--text-3); }
 
     .settings-group {
-      background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
-      margin-top: 24px;
+      background: var(--surface); border: 1px solid var(--border); border-radius: 10px; margin-top: 24px;
     }
     .settings-row {
       padding: 16px 20px; border-bottom: 1px solid var(--border); cursor: pointer;
@@ -264,11 +210,10 @@
     .settings-row:last-child { border-bottom: none; }
     .settings-row:hover { background: var(--surface-2); }
 
-    /* modals - professional */
+    /* MODALS */
     .modal-overlay {
       position: fixed; inset: 0; background: rgba(0,0,0,0.8); backdrop-filter: blur(10px);
-      display: flex; align-items: center; justify-content: center; padding: 20px;
-      z-index: 1000;
+      display: flex; align-items: center; justify-content: center; padding: 20px; z-index: 1000;
     }
     .modal {
       background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
@@ -276,34 +221,36 @@
     }
     .modal-title { font-size: 20px; font-weight: 600; margin-bottom: 24px; }
 
-    /* toast */
-    .toast-container {
-      position: fixed; top: 20px; right: 20px; z-index: 9999;
-    }
+    .toast-container { position: fixed; top: 20px; right: 20px; z-index: 9999; }
     .toast {
       background: var(--surface); border: 1px solid var(--border); border-radius: 6px;
       padding: 12px 20px; margin-bottom: 8px; font-size: 13px;
       display: flex; align-items: center; gap: 8px;
     }
+    .toast.success { border-color: rgba(16,185,129,0.4); }
+    .toast.error { border-color: rgba(239,68,68,0.4); }
 
     @keyframes spin { to { transform: rotate(360deg); } }
+
+    @media (max-width: 600px) {
+      .grid-4 { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+      .pin-card { width: 290px; padding: 24px; }
+    }
   </style>
 </head>
 <body>
 
-<!-- Toast container -->
 <div class="toast-container" id="toastContainer"></div>
 
-<!-- Loading overlay -->
 <div id="loadingOverlay" style="position:fixed; inset:0; background:var(--bg); display:flex; align-items:center; justify-content:center; z-index:9999;">
   <div style="text-align:center;">
     <div style="font-size:48px; margin-bottom:16px;">📄</div>
-    <div class="loader" style="width:40px; height:40px; border:3px solid var(--surface-2); border-top-color:var(--accent); border-radius:50%; animation:spin 1s infinite;"></div>
+    <div style="width:40px; height:40px; border:3px solid var(--surface-2); border-top-color:var(--accent); border-radius:50%; animation:spin 1s infinite; margin:0 auto;"></div>
   </div>
 </div>
 
-<!-- HOME SCREEN -->
-<div id="homeScreen" class="screen active">
+<!-- HOME -->
+<div id="homeScreen" class="screen">
   <div class="home-content">
     <div class="home-logo">📄</div>
     <h1 class="home-title">PDF Maker Pro</h1>
@@ -315,7 +262,7 @@
   </div>
 </div>
 
-<!-- PIN SCREEN with back button -->
+<!-- PIN SCREEN -->
 <div id="pinScreen" class="screen">
   <div class="screen-header">
     <button class="back-btn" onclick="goBack()">←</button>
@@ -324,8 +271,9 @@
   <div style="flex:1; display:flex; align-items:center; justify-content:center;">
     <div class="pin-card">
       <div class="pin-avatar" id="pinAvatar">👤</div>
-      <div style="text-align:center; margin-bottom:16px;">
-        <div id="pinUsername" style="font-weight:500;">Enter PIN</div>
+      <div style="text-align:center; margin-bottom:4px;">
+        <div id="pinUsername" style="font-weight:600; font-size:16px;"></div>
+        <div style="font-size:13px; color:var(--text-2); margin-top:4px;">Enter your 6-digit PIN</div>
       </div>
       <div class="pin-dots" id="pinDots">
         <div class="pin-dot" id="pd0"></div>
@@ -349,23 +297,18 @@
         <button class="num-btn" onclick="numPress('0')">0</button>
         <button class="num-btn enter-btn" onclick="numEnter()">↵</button>
       </div>
-      <div id="pinError" style="color:var(--danger); font-size:12px; text-align:center; margin-top:16px;"></div>
-      <div style="text-align:center; margin-top:16px;">
+      <div id="pinError" style="color:var(--danger); font-size:12px; text-align:center; margin-top:16px; min-height:20px;"></div>
+      <div style="text-align:center; margin-top:12px;">
         <span onclick="switchAccount()" style="color:var(--text-2); font-size:12px; cursor:pointer;">Not you? Switch account</span>
       </div>
     </div>
   </div>
 </div>
 
-<!-- DASHBOARD SCREEN with back button -->
+<!-- DASHBOARD -->
 <div id="dashScreen" class="screen">
   <div class="topbar">
-    <div style="display:flex; align-items:center; gap:12px;">
-      <button class="back-btn" onclick="goBack()" style="position:static; width:auto; height:auto; padding:0 8px;">←</button>
-      <div class="topbar-logo">
-        <span>📄</span> PDF Maker
-      </div>
-    </div>
+    <div class="topbar-logo"><span>📄</span> PDF Maker</div>
     <div style="display:flex; align-items:center; gap:12px;">
       <button class="btn btn-sm" onclick="logout()">Logout</button>
       <div class="topbar-avatar" id="topbarAvatar" onclick="showProfile()">👤</div>
@@ -373,19 +316,19 @@
   </div>
 
   <div class="tabs">
-    <button class="tab-btn active" onclick="switchTab('images', this)">Images</button>
-    <button class="tab-btn" onclick="switchTab('videos', this)">Videos</button>
-    <button class="tab-btn" onclick="switchTab('songs', this)">Music</button>
-    <button class="tab-btn" onclick="switchTab('files', this)">Files</button>
+    <button class="tab-btn active" onclick="switchTab('images', this)">🖼 Images</button>
+    <button class="tab-btn" onclick="switchTab('videos', this)">🎬 Videos</button>
+    <button class="tab-btn" onclick="switchTab('songs', this)">🎵 Music</button>
+    <button class="tab-btn" onclick="switchTab('files', this)">📁 Files</button>
   </div>
 
   <div class="content-area">
-    <!-- Images panel -->
+    <!-- Images -->
     <div class="section-panel active" id="panel-images">
       <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
         <h3 style="font-size:18px; font-weight:600;">Images</h3>
-        <label class="btn btn-primary btn-sm">
-          <span>+ Upload</span>
+        <label class="btn btn-primary btn-sm" style="cursor:pointer;">
+          + Upload
           <input type="file" accept="image/*" multiple style="display:none" onchange="uploadFiles(this,'image')">
         </label>
       </div>
@@ -396,12 +339,12 @@
       <div class="grid-4" id="imageGrid"></div>
     </div>
 
-    <!-- Videos panel -->
+    <!-- Videos -->
     <div class="section-panel" id="panel-videos">
       <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
         <h3 style="font-size:18px; font-weight:600;">Videos</h3>
-        <label class="btn btn-primary btn-sm">
-          <span>+ Upload</span>
+        <label class="btn btn-primary btn-sm" style="cursor:pointer;">
+          + Upload
           <input type="file" accept="video/*" multiple style="display:none" onchange="uploadFiles(this,'video')">
         </label>
       </div>
@@ -412,12 +355,12 @@
       <div class="grid-4" id="videoGrid"></div>
     </div>
 
-    <!-- Music panel -->
+    <!-- Music -->
     <div class="section-panel" id="panel-songs">
       <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
         <h3 style="font-size:18px; font-weight:600;">Music</h3>
-        <label class="btn btn-primary btn-sm">
-          <span>+ Upload</span>
+        <label class="btn btn-primary btn-sm" style="cursor:pointer;">
+          + Upload
           <input type="file" accept="audio/*" multiple style="display:none" onchange="uploadFiles(this,'song')">
         </label>
       </div>
@@ -425,47 +368,44 @@
         <div style="font-size:24px; margin-bottom:8px;">🎵</div>
         <div style="font-size:14px; color:var(--text-2);">Drop music or click to upload</div>
       </div>
-      
-      <!-- Audio player -->
       <div id="nowPlaying" style="display:none; background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:16px; margin-bottom:20px;">
         <audio id="audioPlayer" style="display:none"></audio>
         <div style="display:flex; align-items:center; gap:16px;">
           <div style="font-size:32px;">🎵</div>
           <div style="flex:1;">
-            <div id="nowPlayingName" style="font-weight:500; margin-bottom:8px;"></div>
+            <div id="nowPlayingName" style="font-weight:500; margin-bottom:8px; font-size:14px;"></div>
             <div style="display:flex; align-items:center; gap:12px;">
-              <button onclick="seekBack()" style="background:none; border:none; color:var(--text);">⏮</button>
-              <button id="playPauseBtn" onclick="togglePlay()" style="background:var(--accent); border:none; color:white; width:32px; height:32px; border-radius:6px;">▶</button>
-              <button onclick="seekForward()" style="background:none; border:none; color:var(--text);">⏭</button>
-              <input type="range" id="seekBar" style="flex:1; height:4px;" value="0" oninput="seekAudio(this.value)">
-              <span id="audioTime" style="font-size:12px; color:var(--text-2);">0:00</span>
+              <button onclick="seekBack()" style="background:none; border:none; color:var(--text); cursor:pointer; font-size:16px;">⏮</button>
+              <button id="playPauseBtn" onclick="togglePlay()" style="background:var(--accent); border:none; color:white; width:32px; height:32px; border-radius:6px; cursor:pointer; font-size:14px;">▶</button>
+              <button onclick="seekForward()" style="background:none; border:none; color:var(--text); cursor:pointer; font-size:16px;">⏭</button>
+              <input type="range" id="seekBar" style="flex:1; accent-color:var(--accent);" value="0" oninput="seekAudio(this.value)">
+              <span id="audioTime" style="font-size:12px; color:var(--text-2); white-space:nowrap;">0:00</span>
             </div>
           </div>
         </div>
       </div>
-      
       <div class="list-view" id="songList"></div>
     </div>
 
-    <!-- Files panel -->
+    <!-- Files -->
     <div class="section-panel" id="panel-files">
       <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
         <h3 style="font-size:18px; font-weight:600;">Files</h3>
-        <label class="btn btn-primary btn-sm">
-          <span>+ Upload</span>
+        <label class="btn btn-primary btn-sm" style="cursor:pointer;">
+          + Upload
           <input type="file" multiple style="display:none" onchange="uploadFiles(this,'file')">
         </label>
       </div>
       <div class="upload-zone" onclick="document.querySelector('#panel-files input[type=file]').click()">
         <div style="font-size:24px; margin-bottom:8px;">📁</div>
-        <div style="font-size:14px; color:var(--text-2);">Drop files or click to upload</div>
+        <div style="font-size:14px; color:var(--text-2);">Drop any file or click to upload</div>
       </div>
       <div class="list-view" id="filesList"></div>
     </div>
   </div>
 </div>
 
-<!-- PROFILE SCREEN with back button -->
+<!-- PROFILE -->
 <div id="profileScreen" class="screen">
   <div class="profile-header">
     <button class="back-btn" onclick="goBack()">←</button>
@@ -474,72 +414,54 @@
   <div class="profile-content">
     <div class="profile-avatar" id="profileAvatar" onclick="document.getElementById('profileImgInput').click()">👤</div>
     <input type="file" id="profileImgInput" accept="image/*" style="display:none" onchange="updateProfileImage(this)">
-    
     <div style="text-align:center;">
       <div id="profileName" style="font-size:20px; font-weight:600;"></div>
-      <div id="profileEmail" style="color:var(--text-2); font-size:14px;"></div>
+      <div id="profileEmail" style="color:var(--text-2); font-size:14px; margin-top:4px;"></div>
       <div id="profileJoined" style="color:var(--text-3); font-size:12px; margin-top:4px;"></div>
     </div>
-
     <div class="profile-stats">
-      <div class="stat-item">
-        <div class="stat-value" id="statImages">0</div>
-        <div class="stat-label">Images</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-value" id="statVideos">0</div>
-        <div class="stat-label">Videos</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-value" id="statSongs">0</div>
-        <div class="stat-label">Music</div>
-      </div>
+      <div class="stat-item"><div class="stat-value" id="statImages">0</div><div class="stat-label">Images</div></div>
+      <div class="stat-item"><div class="stat-value" id="statVideos">0</div><div class="stat-label">Videos</div></div>
+      <div class="stat-item"><div class="stat-value" id="statSongs">0</div><div class="stat-label">Music</div></div>
     </div>
-
     <div class="settings-group">
-      <div class="settings-row" onclick="showEditProfile()">
-        <span>✏️ Edit profile</span>
-        <span>→</span>
-      </div>
-      <div class="settings-row" onclick="showChangePIN()">
-        <span>🔑 Change PIN</span>
-        <span>→</span>
-      </div>
-      <div class="settings-row" onclick="logout()" style="color:var(--danger);">
-        <span>🚪 Logout</span>
-        <span>→</span>
-      </div>
+      <div class="settings-row" onclick="showEditProfile()"><span>✏️ Edit profile</span><span>→</span></div>
+      <div class="settings-row" onclick="showChangePIN()"><span>🔑 Change PIN</span><span>→</span></div>
+      <div class="settings-row" onclick="logout()" style="color:var(--danger);"><span>🚪 Logout</span><span>→</span></div>
     </div>
   </div>
 </div>
 
-<!-- MODALS (fixed with autocomplete off) -->
+<!-- REGISTER MODAL -->
 <div class="modal-overlay" id="registerModal" style="display:none" onclick="if(event.target===this)closeModal('registerModal')">
   <div class="modal">
     <h3 class="modal-title">Create account</h3>
     <div style="margin-bottom:20px; text-align:center;">
-      <div class="profile-avatar" id="regAvatarPreview" onclick="document.getElementById('regProfileImg').click()" style="width:80px; height:80px; margin:0 auto; cursor:pointer;">👤</div>
+      <div class="profile-avatar" id="regAvatarPreview" onclick="document.getElementById('regProfileImg').click()" style="width:80px; height:80px; margin:0 auto; cursor:pointer; font-size:28px;">👤</div>
       <input type="file" id="regProfileImg" accept="image/*" style="display:none" onchange="previewAvatar(this)">
+      <div style="font-size:12px; color:var(--text-2); margin-top:8px;">Tap to add photo (optional)</div>
     </div>
-    <div style="display:flex; flex-direction:column; gap:16px;">
-      <!-- AUTOCOMPLETE OFF - YEH FIX HAI -->
+    <div style="display:flex; flex-direction:column; gap:14px;">
       <input class="input-field" type="text" id="regUsername" placeholder="Username" autocomplete="off">
       <input class="input-field" type="email" id="regEmail" placeholder="Email" autocomplete="off">
-      <input class="input-field" type="password" id="regPin" placeholder="6-digit PIN" maxlength="6" autocomplete="new-password">
-      <input class="input-field" type="password" id="regConfirmPin" placeholder="Confirm PIN" maxlength="6" autocomplete="new-password">
-      <button class="btn btn-primary" onclick="register()">Create account</button>
+      <input class="input-field" type="password" id="regPin" placeholder="6-digit PIN" maxlength="6" inputmode="numeric" autocomplete="new-password">
+      <input class="input-field" type="password" id="regConfirmPin" placeholder="Confirm PIN" maxlength="6" inputmode="numeric" autocomplete="new-password">
+      <button class="btn btn-primary" onclick="register()" id="regBtn">Create account</button>
+      <div style="text-align:center; font-size:13px; color:var(--text-2);">
+        Already have account? <span onclick="closeModal('registerModal');showLoginForm()" style="color:var(--accent); cursor:pointer;">Sign in</span>
+      </div>
     </div>
   </div>
 </div>
 
+<!-- LOGIN MODAL -->
 <div class="modal-overlay" id="loginModal" style="display:none" onclick="if(event.target===this)closeModal('loginModal')">
   <div class="modal">
     <h3 class="modal-title">Sign in</h3>
-    <div style="display:flex; flex-direction:column; gap:16px;">
-      <!-- AUTOCOMPLETE OFF - YEH FIX HAI -->
+    <div style="display:flex; flex-direction:column; gap:14px;">
       <input class="input-field" type="text" id="loginIdentifier" placeholder="Email or username" autocomplete="off">
-      <input class="input-field" type="password" id="loginPin" placeholder="6-digit PIN" maxlength="6" autocomplete="new-password">
-      <button class="btn btn-primary" onclick="loginWithPin()">Sign in</button>
+      <input class="input-field" type="password" id="loginPin" placeholder="6-digit PIN" maxlength="6" inputmode="numeric" autocomplete="new-password" onkeydown="if(event.key==='Enter')loginWithPin()">
+      <button class="btn btn-primary" onclick="loginWithPin()" id="loginBtn">Sign in</button>
       <div style="text-align:center; font-size:13px; color:var(--text-2);">
         New user? <span onclick="closeModal('loginModal');showRegister()" style="color:var(--accent); cursor:pointer;">Create account</span>
       </div>
@@ -547,10 +469,11 @@
   </div>
 </div>
 
+<!-- EDIT PROFILE MODAL -->
 <div class="modal-overlay" id="editProfileModal" style="display:none" onclick="if(event.target===this)closeModal('editProfileModal')">
   <div class="modal">
     <h3 class="modal-title">Edit profile</h3>
-    <div style="display:flex; flex-direction:column; gap:16px;">
+    <div style="display:flex; flex-direction:column; gap:14px;">
       <input class="input-field" type="text" id="editUsername" placeholder="Username" autocomplete="off">
       <input class="input-field" type="email" id="editEmail" placeholder="Email" autocomplete="off">
       <div style="display:flex; gap:12px;">
@@ -561,13 +484,14 @@
   </div>
 </div>
 
+<!-- CHANGE PIN MODAL -->
 <div class="modal-overlay" id="changePINModal" style="display:none" onclick="if(event.target===this)closeModal('changePINModal')">
   <div class="modal">
     <h3 class="modal-title">Change PIN</h3>
-    <div style="display:flex; flex-direction:column; gap:16px;">
-      <input class="input-field" type="password" id="currentPin" placeholder="Current PIN" maxlength="6" autocomplete="new-password">
-      <input class="input-field" type="password" id="newPin" placeholder="New 6-digit PIN" maxlength="6" autocomplete="new-password">
-      <input class="input-field" type="password" id="confirmNewPin" placeholder="Confirm new PIN" maxlength="6" autocomplete="new-password">
+    <div style="display:flex; flex-direction:column; gap:14px;">
+      <input class="input-field" type="password" id="currentPin" placeholder="Current PIN" maxlength="6" inputmode="numeric" autocomplete="new-password">
+      <input class="input-field" type="password" id="newPin" placeholder="New 6-digit PIN" maxlength="6" inputmode="numeric" autocomplete="new-password">
+      <input class="input-field" type="password" id="confirmNewPin" placeholder="Confirm new PIN" maxlength="6" inputmode="numeric" autocomplete="new-password">
       <div style="display:flex; gap:12px;">
         <button class="btn" onclick="closeModal('changePINModal')" style="flex:1;">Cancel</button>
         <button class="btn btn-primary" onclick="savePin()" style="flex:1;">Update</button>
@@ -576,45 +500,74 @@
   </div>
 </div>
 
-<!-- Lightbox -->
+<!-- LIGHTBOX -->
 <div class="modal-overlay" id="lightbox" style="display:none; background:rgba(0,0,0,0.95);" onclick="closeLightbox()">
-  <div id="lightboxContent" style="max-width:90%; max-height:90%;"></div>
+  <div id="lightboxContent" style="max-width:90vw; max-height:90vh;" onclick="event.stopPropagation()"></div>
+  <button onclick="closeLightbox()" style="position:absolute; top:20px; right:20px; background:rgba(255,255,255,0.1); border:none; color:white; width:40px; height:40px; border-radius:8px; font-size:20px; cursor:pointer;">✕</button>
 </div>
 
 <script>
-// ==================== RENDER BACKEND URL ====================
-const API_BASE_URL = 'https://pdfmaker-1jcx.onrender.com';
+// ============================================================
+// API BASE — Render backend URL
+// ============================================================
+const API_BASE = 'https://pdfmaker-1jcx.onrender.com/api';
 
-// ==================== PROFESSIONAL JAVASCRIPT ====================
+// ============================================================
+// STATE
+// ============================================================
 let currentUser = null;
 let pinInput = '';
-let currentAudio = null;
 let currentAudioItem = null;
 let songs = [];
-let screenHistory = []; // For back button navigation
+let screenHistory = [];
 
-// Hide loading
-setTimeout(() => document.getElementById('loadingOverlay').style.display = 'none', 500);
+// ============================================================
+// INIT — page load pe check karo
+// ============================================================
+async function init() {
+  try {
+    const res = await fetch(`${API_BASE}/auth/check`, {
+      credentials: 'include'
+    });
+    const data = await res.json();
 
-// ==================== SCREEN MANAGEMENT WITH BACK BUTTON ====================
+    document.getElementById('loadingOverlay').style.display = 'none';
+
+    if (data.hasAccount && data.user) {
+      currentUser = data.user;
+      // Session clear karo — PIN hamesha maango
+      await fetch(`${API_BASE}/auth/clear-session`, {
+        method: 'POST',
+        credentials: 'include'
+      });
+      showPinScreen();
+    } else {
+      showScreen('homeScreen');
+    }
+  } catch (e) {
+    document.getElementById('loadingOverlay').style.display = 'none';
+    showScreen('homeScreen');
+  }
+}
+
+// ============================================================
+// SCREEN MANAGEMENT
+// ============================================================
 function showScreen(id) {
-  // Add current screen to history before changing
   const currentActive = document.querySelector('.screen.active');
-  if (currentActive) {
+  if (currentActive && currentActive.id !== id) {
     screenHistory.push(currentActive.id);
   }
-  
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
 }
 
 function goBack() {
   if (screenHistory.length > 0) {
-    const previousScreen = screenHistory.pop();
+    const prev = screenHistory.pop();
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-    document.getElementById(previousScreen).classList.add('active');
+    document.getElementById(prev).classList.add('active');
   } else {
-    // If no history, go to home
     showScreen('homeScreen');
   }
 }
@@ -622,14 +575,17 @@ function goBack() {
 function showPinScreen() {
   showScreen('pinScreen');
   if (currentUser) {
-    document.getElementById('pinUsername').textContent = currentUser.username || 'Welcome';
+    document.getElementById('pinUsername').textContent = currentUser.username || 'Welcome back';
     if (currentUser.profileImage) {
-      document.getElementById('pinAvatar').innerHTML = `<img src="${currentUser.profileImage}" style="width:100%; height:100%; object-fit:cover;">`;
+      document.getElementById('pinAvatar').innerHTML = `<img src="${currentUser.profileImage}">`;
     }
   }
+  pinInput = '';
+  updatePinDots();
+  document.getElementById('pinError').textContent = '';
 }
 
-function showDashboard() {
+async function showDashboard() {
   showScreen('dashScreen');
   updateTopbarAvatar();
   loadFiles('image');
@@ -643,110 +599,124 @@ function showProfile() {
   loadProfile();
 }
 
-// ==================== AUTH ====================
-function showRegister() { 
-  document.getElementById('registerModal').style.display = 'flex'; 
+// ============================================================
+// AUTH
+// ============================================================
+function showRegister() {
+  document.getElementById('registerModal').style.display = 'flex';
 }
 
-function showLoginForm() { 
-  document.getElementById('loginModal').style.display = 'flex'; 
+function showLoginForm() {
+  document.getElementById('loginModal').style.display = 'flex';
+  setTimeout(() => document.getElementById('loginIdentifier').focus(), 100);
 }
 
-function closeModal(id) { 
-  document.getElementById(id).style.display = 'none'; 
+function closeModal(id) {
+  document.getElementById(id).style.display = 'none';
 }
 
 function previewAvatar(input) {
   if (input.files[0]) {
     const reader = new FileReader();
     reader.onload = e => {
-      document.getElementById('regAvatarPreview').innerHTML = `<img src="${e.target.result}" style="width:100%; height:100%; object-fit:cover;">`;
+      document.getElementById('regAvatarPreview').innerHTML = `<img src="${e.target.result}" style="width:100%; height:100%; object-fit:cover; border-radius:12px;">`;
     };
     reader.readAsDataURL(input.files[0]);
   }
 }
 
 async function register() {
+  const btn = document.getElementById('regBtn');
   const username = document.getElementById('regUsername').value.trim();
   const email = document.getElementById('regEmail').value.trim();
   const pin = document.getElementById('regPin').value;
   const confirmPin = document.getElementById('regConfirmPin').value;
 
   if (!username || !email || !pin) return toast('All fields required', 'error');
-  if (!/^\d{6}$/.test(pin)) return toast('PIN must be 6 digits', 'error');
+  if (!/^\d{6}$/.test(pin)) return toast('PIN must be exactly 6 digits', 'error');
   if (pin !== confirmPin) return toast('PINs do not match', 'error');
+
+  btn.textContent = 'Creating...';
+  btn.disabled = true;
 
   const formData = new FormData();
   formData.append('username', username);
   formData.append('email', email);
   formData.append('pin', pin);
   formData.append('confirmPin', confirmPin);
-  
   const profileFile = document.getElementById('regProfileImg').files[0];
   if (profileFile) formData.append('profileImage', profileFile);
 
   try {
-    const res = await fetch(`${API_BASE_URL}/api/auth/register`, { 
-      method: 'POST', 
-      body: formData 
+    const res = await fetch(`${API_BASE}/auth/register`, {
+      method: 'POST',
+      body: formData,
+      credentials: 'include'   // ← cookies ke liye zaruri
     });
     const data = await res.json();
     if (data.success) {
       currentUser = data.user;
       closeModal('registerModal');
-      toast('Account created!', 'success');
+      toast('Account created! Welcome 🎉', 'success');
       showDashboard();
     } else {
-      toast(data.message, 'error');
+      toast(data.message || 'Registration failed', 'error');
     }
   } catch (e) {
-    toast('Registration failed: ' + e.message, 'error');
+    toast('Network error: ' + e.message, 'error');
   }
+
+  btn.textContent = 'Create account';
+  btn.disabled = false;
 }
 
 async function loginWithPin() {
+  const btn = document.getElementById('loginBtn');
   const identifier = document.getElementById('loginIdentifier').value.trim();
   const pin = document.getElementById('loginPin').value;
 
   if (!identifier) return toast('Enter email or username', 'error');
   if (!/^\d{6}$/.test(pin)) return toast('PIN must be 6 digits', 'error');
 
+  btn.textContent = 'Signing in...';
+  btn.disabled = true;
+
   try {
-    const res = await fetch(`${API_BASE_URL}/api/auth/login-by-identifier`, {
+    const res = await fetch(`${API_BASE}/auth/login-by-identifier`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ identifier, pin })
+      body: JSON.stringify({ identifier, pin }),
+      credentials: 'include'   // ← cookies ke liye zaruri
     });
     const data = await res.json();
     if (data.success) {
       currentUser = data.user;
       closeModal('loginModal');
-      toast('Welcome back!', 'success');
+      toast('Welcome back! 👋', 'success');
       showDashboard();
     } else {
-      toast(data.message, 'error');
+      toast(data.message || 'Login failed', 'error');
     }
   } catch (e) {
-    toast('Login failed: ' + e.message, 'error');
+    toast('Network error: ' + e.message, 'error');
   }
+
+  btn.textContent = 'Sign in';
+  btn.disabled = false;
 }
 
-// ==================== PIN ====================
+// ============================================================
+// PIN
+// ============================================================
 function numPress(n) {
-  if (pinInput.length < 6) {
-    pinInput += n;
-    updatePinDots();
-  }
+  if (pinInput.length < 6) { pinInput += n; updatePinDots(); }
 }
-
 function numDelete() {
   pinInput = pinInput.slice(0, -1);
   updatePinDots();
+  document.getElementById('pinError').textContent = '';
 }
-
-function numEnter() {
-  if (pinInput.length === 6) verifyPin();
-}
+function numEnter() { if (pinInput.length === 6) verifyPin(); }
 
 function updatePinDots() {
   for (let i = 0; i < 6; i++) {
@@ -756,24 +726,26 @@ function updatePinDots() {
 
 async function verifyPin() {
   try {
-    const res = await fetch(`${API_BASE_URL}/api/auth/login`, {
+    const res = await fetch(`${API_BASE}/auth/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ pin: pinInput, userId: currentUser?._id })
+      body: JSON.stringify({ pin: pinInput, userId: currentUser?._id }),
+      credentials: 'include'   // ← cookies ke liye zaruri
     });
     const data = await res.json();
     if (data.success) {
       currentUser = data.user;
       pinInput = '';
       updatePinDots();
+      toast('Welcome! 👋', 'success');
       showDashboard();
     } else {
-      document.getElementById('pinError').textContent = data.message;
+      document.getElementById('pinError').textContent = data.message || 'Wrong PIN';
       pinInput = '';
       updatePinDots();
     }
   } catch (e) {
-    document.getElementById('pinError').textContent = 'Error verifying PIN';
+    document.getElementById('pinError').textContent = 'Network error';
     pinInput = '';
     updatePinDots();
   }
@@ -781,20 +753,25 @@ async function verifyPin() {
 
 function switchAccount() {
   currentUser = null;
+  fetch(`${API_BASE}/auth/logout`, { method: 'POST', credentials: 'include' }).catch(() => {});
+  document.cookie = 'pdfmaker_user=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
   showScreen('homeScreen');
 }
 
 async function logout() {
   try {
-    await fetch(`${API_BASE_URL}/api/auth/logout`, { method: 'POST' });
+    await fetch(`${API_BASE}/auth/logout`, { method: 'POST', credentials: 'include' });
   } catch (e) {}
   currentUser = null;
   pinInput = '';
+  screenHistory = [];
   showScreen('homeScreen');
   toast('Logged out', 'success');
 }
 
-// ==================== TABS ====================
+// ============================================================
+// TABS
+// ============================================================
 function switchTab(type, btn) {
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
@@ -802,60 +779,60 @@ function switchTab(type, btn) {
   document.getElementById('panel-' + type).classList.add('active');
 }
 
-// ==================== FILE UPLOAD ====================
-function uploadFiles(input, type) {
+// ============================================================
+// FILE UPLOAD
+// ============================================================
+async function uploadFiles(input, type) {
   if (!input.files.length) return;
-  
   const formData = new FormData();
   for (const f of input.files) formData.append('files', f);
 
-  fetch(`${API_BASE_URL}/api/files/upload/` + type, { 
-    method: 'POST', 
-    body: formData 
-  })
-    .then(res => res.json())
-    .then(data => {
-      if (data.success) {
-        toast('Uploaded successfully', 'success');
-        loadFiles(type);
-      } else {
-        toast(data.message, 'error');
-      }
-    })
-    .catch(() => toast('Upload failed', 'error'));
-  
+  toast('Uploading...', 'success');
+
+  try {
+    const res = await fetch(`${API_BASE}/files/upload/${type}`, {
+      method: 'POST',
+      body: formData,
+      credentials: 'include'   // ← cookies ke liye zaruri
+    });
+    const data = await res.json();
+    if (data.success) {
+      toast(`${data.files.length} file(s) uploaded ✅`, 'success');
+      loadFiles(type);
+    } else {
+      toast(data.message || 'Upload failed', 'error');
+    }
+  } catch (e) {
+    toast('Upload error: ' + e.message, 'error');
+  }
   input.value = '';
 }
 
-// ==================== LOAD FILES ====================
+// ============================================================
+// LOAD FILES
+// ============================================================
 async function loadFiles(type) {
   try {
-    const res = await fetch(`${API_BASE_URL}/api/files/` + type);
+    const res = await fetch(`${API_BASE}/files/${type}`, {
+      credentials: 'include'   // ← cookies ke liye zaruri
+    });
     const data = await res.json();
-    if (data.success) {
-      if (type === 'image') renderImages(data.files);
-      else if (type === 'video') renderVideos(data.files);
-      else if (type === 'song') {
-        songs = data.files;
-        renderSongs(data.files);
-      } else renderFiles(data.files);
-    }
+    if (!data.success) return;
+    if (type === 'image') renderImages(data.files);
+    else if (type === 'video') renderVideos(data.files);
+    else if (type === 'song') { songs = data.files; renderSongs(data.files); }
+    else renderFiles(data.files);
   } catch (e) {
-    console.log('Error loading files:', e);
+    console.log('Load files error:', e);
   }
 }
 
 function renderImages(files) {
   const grid = document.getElementById('imageGrid');
-  if (!files.length) {
-    grid.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:40px; color:var(--text-2);">No images yet</div>';
-    return;
-  }
+  if (!files.length) { grid.innerHTML = emptyState('🖼️', 'No images yet'); return; }
   grid.innerHTML = files.map(f => `
-    <div class="file-card" style="position:relative;" onclick="openLightbox('img','${f.path}')">
-      <div class="file-thumb">
-        <img src="${f.path}" alt="${f.originalName}">
-      </div>
+    <div class="file-card" onclick="openLightbox('img','${f.path}')">
+      <div class="file-thumb"><img src="${f.path}" alt="${f.originalName}" loading="lazy"></div>
       <div class="file-info">
         <div class="file-name">${f.originalName}</div>
         <div class="file-meta">${formatSize(f.size)}</div>
@@ -867,15 +844,10 @@ function renderImages(files) {
 
 function renderVideos(files) {
   const grid = document.getElementById('videoGrid');
-  if (!files.length) {
-    grid.innerHTML = '<div style="grid-column:1/-1; text-align:center; padding:40px; color:var(--text-2);">No videos yet</div>';
-    return;
-  }
+  if (!files.length) { grid.innerHTML = emptyState('🎬', 'No videos yet'); return; }
   grid.innerHTML = files.map(f => `
-    <div class="file-card" style="position:relative;" onclick="openLightbox('video','${f.path}')">
-      <div class="file-thumb">
-        <video src="${f.path}" preload="metadata" muted></video>
-      </div>
+    <div class="file-card" onclick="openLightbox('video','${f.path}')">
+      <div class="file-thumb"><video src="${f.path}" preload="metadata" muted></video></div>
       <div class="file-info">
         <div class="file-name">${f.originalName}</div>
         <div class="file-meta">${formatSize(f.size)}</div>
@@ -887,48 +859,48 @@ function renderVideos(files) {
 
 function renderSongs(files) {
   const list = document.getElementById('songList');
-  if (!files.length) {
-    list.innerHTML = '<div style="text-align:center; padding:40px; color:var(--text-2);">No music yet</div>';
-    return;
-  }
+  if (!files.length) { list.innerHTML = emptyState('🎵', 'No music yet'); return; }
   list.innerHTML = files.map((f, i) => `
     <div class="list-item" id="audio-${f._id}" onclick="playAudio('${f._id}','${f.path}','${f.originalName}',${i})" style="cursor:pointer;">
-      <div class="list-icon" id="btn-${f._id}">▶</div>
+      <div class="list-icon" id="btn-${f._id}" style="cursor:pointer; color:var(--accent); font-size:20px;">▶</div>
       <div class="list-info">
         <div class="list-name">${f.originalName}</div>
         <div class="list-meta">${formatSize(f.size)}</div>
       </div>
-      <button class="btn btn-sm" onclick="event.stopPropagation();deleteFile('${f._id}','song')" style="color:var(--danger);">Delete</button>
+      <button class="btn btn-sm" onclick="event.stopPropagation();deleteFile('${f._id}','song')" style="color:var(--danger); flex-shrink:0;">Delete</button>
     </div>
   `).join('');
 }
 
 function renderFiles(files) {
   const list = document.getElementById('filesList');
-  if (!files.length) {
-    list.innerHTML = '<div style="text-align:center; padding:40px; color:var(--text-2);">No files yet</div>';
-    return;
-  }
+  if (!files.length) { list.innerHTML = emptyState('📁', 'No files yet'); return; }
   list.innerHTML = files.map(f => `
     <div class="list-item">
       <div class="list-icon">📄</div>
       <div class="list-info">
         <div class="list-name">${f.originalName}</div>
-        <div class="list-meta">${formatSize(f.size)}</div>
+        <div class="list-meta">${formatSize(f.size)} • ${formatDate(f.uploadedAt)}</div>
       </div>
-      <a href="${f.path}" download class="btn btn-sm">Download</a>
-      <button class="btn btn-sm" onclick="deleteFile('${f._id}','file')" style="color:var(--danger);">Delete</button>
+      <a href="${f.path}" download class="btn btn-sm" style="flex-shrink:0;">⬇ Download</a>
+      <button class="btn btn-sm" onclick="deleteFile('${f._id}','file')" style="color:var(--danger); flex-shrink:0;">Delete</button>
     </div>
   `).join('');
 }
 
-// ==================== AUDIO PLAYER ====================
+function emptyState(icon, text) {
+  return `<div style="grid-column:1/-1; text-align:center; padding:48px; color:var(--text-2);">
+    <div style="font-size:40px; margin-bottom:12px; opacity:0.4;">${icon}</div>
+    <div>${text}</div>
+  </div>`;
+}
+
+// ============================================================
+// AUDIO PLAYER
+// ============================================================
 function playAudio(id, path, name, index) {
   const player = document.getElementById('audioPlayer');
-  
-  document.querySelectorAll('.list-icon').forEach(el => {
-    if (el.id !== 'btn-' + id) el.textContent = '▶';
-  });
+  document.querySelectorAll('[id^="btn-"]').forEach(el => { el.textContent = '▶'; });
 
   if (currentAudioItem === id && !player.paused) {
     player.pause();
@@ -950,74 +922,87 @@ function playAudio(id, path, name, index) {
     document.getElementById('audioTime').textContent = formatTime(player.currentTime);
     document.getElementById('playPauseBtn').textContent = player.paused ? '▶' : '⏸';
   };
+
+  player.onended = () => {
+    const next = songs[index + 1];
+    if (next) playAudio(next._id, next.path, next.originalName, index + 1);
+    else { document.getElementById('nowPlaying').style.display = 'none'; currentAudioItem = null; }
+  };
 }
 
 function togglePlay() {
   const p = document.getElementById('audioPlayer');
   p.paused ? p.play() : p.pause();
+  document.getElementById('playPauseBtn').textContent = p.paused ? '▶' : '⏸';
 }
-
 function seekAudio(v) {
   const p = document.getElementById('audioPlayer');
   if (p.duration) p.currentTime = (v / 100) * p.duration;
 }
-
 function seekBack() { document.getElementById('audioPlayer').currentTime = 0; }
 function seekForward() { document.getElementById('audioPlayer').currentTime += 10; }
 
-// ==================== DELETE ====================
+// ============================================================
+// DELETE
+// ============================================================
 async function deleteFile(id, type) {
   if (!confirm('Delete this file?')) return;
   try {
-    const res = await fetch(`${API_BASE_URL}/api/files/` + id, { method: 'DELETE' });
+    const res = await fetch(`${API_BASE}/files/${id}`, {
+      method: 'DELETE',
+      credentials: 'include'   // ← cookies ke liye zaruri
+    });
     const data = await res.json();
-    if (data.success) {
-      toast('File deleted', 'success');
-      loadFiles(type);
-    }
+    if (data.success) { toast('Deleted ✅', 'success'); loadFiles(type); }
+    else toast(data.message || 'Delete failed', 'error');
   } catch (e) {
     toast('Error deleting', 'error');
   }
 }
 
-// ==================== LIGHTBOX ====================
+// ============================================================
+// LIGHTBOX
+// ============================================================
 function openLightbox(type, src) {
   const lb = document.getElementById('lightbox');
   const content = document.getElementById('lightboxContent');
   if (type === 'img') {
-    content.innerHTML = `<img src="${src}" style="max-width:100%; max-height:90vh; border-radius:8px;">`;
+    content.innerHTML = `<img src="${src}" style="max-width:90vw; max-height:85vh; border-radius:8px; object-fit:contain;">`;
   } else {
-    content.innerHTML = `<video src="${src}" controls style="max-width:100%; max-height:90vh; border-radius:8px;"></video>`;
+    content.innerHTML = `<video src="${src}" controls autoplay style="max-width:90vw; max-height:85vh; border-radius:8px;"></video>`;
   }
   lb.style.display = 'flex';
 }
 
 function closeLightbox() {
-  document.getElementById('lightbox').style.display = 'none';
+  const lb = document.getElementById('lightbox');
+  lb.style.display = 'none';
+  lb.querySelector('video')?.pause();
   document.getElementById('lightboxContent').innerHTML = '';
 }
 
-// ==================== PROFILE ====================
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+// ============================================================
+// PROFILE
+// ============================================================
 async function loadProfile() {
   try {
-    const res = await fetch(`${API_BASE_URL}/api/profile`);
+    const res = await fetch(`${API_BASE}/profile`, { credentials: 'include' });
     const data = await res.json();
-    if (data.success) {
-      const u = data.user;
-      document.getElementById('profileName').textContent = u.username;
-      document.getElementById('profileEmail').textContent = u.email;
-      document.getElementById('profileJoined').textContent = 'Joined ' + formatDate(u.createdAt);
-      
-      if (u.profileImage) {
-        document.getElementById('profileAvatar').innerHTML = `<img src="${u.profileImage}" style="width:100%; height:100%; object-fit:cover;">`;
-      }
-      
-      const stats = { image: 0, video: 0, song: 0 };
-      data.stats.forEach(s => { if (stats[s._id] !== undefined) stats[s._id] = s.count; });
-      document.getElementById('statImages').textContent = stats.image;
-      document.getElementById('statVideos').textContent = stats.video;
-      document.getElementById('statSongs').textContent = stats.song;
+    if (!data.success) return;
+    const u = data.user;
+    document.getElementById('profileName').textContent = u.username;
+    document.getElementById('profileEmail').textContent = u.email;
+    document.getElementById('profileJoined').textContent = 'Joined ' + formatDate(u.createdAt);
+    if (u.profileImage) {
+      document.getElementById('profileAvatar').innerHTML = `<img src="${u.profileImage}">`;
     }
+    const stats = { image: 0, video: 0, song: 0 };
+    data.stats.forEach(s => { if (stats[s._id] !== undefined) stats[s._id] = s.count; });
+    document.getElementById('statImages').textContent = stats.image;
+    document.getElementById('statVideos').textContent = stats.video;
+    document.getElementById('statSongs').textContent = stats.song;
   } catch (e) {}
 }
 
@@ -1031,23 +1016,18 @@ async function saveProfile() {
   const formData = new FormData();
   formData.append('username', document.getElementById('editUsername').value);
   formData.append('email', document.getElementById('editEmail').value);
-  
   try {
-    const res = await fetch(`${API_BASE_URL}/api/profile/update`, { 
-      method: 'PUT', 
-      body: formData 
+    const res = await fetch(`${API_BASE}/profile/update`, {
+      method: 'PUT', body: formData, credentials: 'include'
     });
     const data = await res.json();
     if (data.success) {
       currentUser = { ...currentUser, ...data.user };
       closeModal('editProfileModal');
-      toast('Profile updated', 'success');
-      loadProfile();
-      updateTopbarAvatar();
-    }
-  } catch (e) {
-    toast('Error updating', 'error');
-  }
+      toast('Profile updated ✅', 'success');
+      loadProfile(); updateTopbarAvatar();
+    } else toast(data.message, 'error');
+  } catch (e) { toast('Error updating', 'error'); }
 }
 
 function showChangePIN() {
@@ -1057,45 +1037,36 @@ function showChangePIN() {
 async function savePin() {
   const current = document.getElementById('currentPin').value;
   const newPin = document.getElementById('newPin').value;
-  const confirm = document.getElementById('confirmNewPin').value;
-
+  const confirmNew = document.getElementById('confirmNewPin').value;
   if (!/^\d{6}$/.test(newPin)) return toast('PIN must be 6 digits', 'error');
-  if (newPin !== confirm) return toast('PINs do not match', 'error');
-
+  if (newPin !== confirmNew) return toast('PINs do not match', 'error');
   try {
-    const res = await fetch(`${API_BASE_URL}/api/profile/change-pin`, {
+    const res = await fetch(`${API_BASE}/profile/change-pin`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ currentPin: current, newPin })
+      body: JSON.stringify({ currentPin: current, newPin }),
+      credentials: 'include'
     });
     const data = await res.json();
-    if (data.success) {
-      closeModal('changePINModal');
-      toast('PIN changed', 'success');
-    } else {
-      toast(data.message, 'error');
-    }
-  } catch (e) {
-    toast('Error changing PIN', 'error');
-  }
+    if (data.success) { closeModal('changePINModal'); toast('PIN changed 🔑', 'success'); }
+    else toast(data.message, 'error');
+  } catch (e) { toast('Error changing PIN', 'error'); }
 }
 
 async function updateProfileImage(input) {
   if (!input.files[0]) return;
   const formData = new FormData();
   formData.append('profileImage', input.files[0]);
-  
   try {
-    const res = await fetch(`${API_BASE_URL}/api/profile/update`, { 
-      method: 'PUT', 
-      body: formData 
+    const res = await fetch(`${API_BASE}/profile/update`, {
+      method: 'PUT', body: formData, credentials: 'include'
     });
     const data = await res.json();
     if (data.success) {
       currentUser.profileImage = data.user.profileImage;
-      document.getElementById('profileAvatar').innerHTML = `<img src="${data.user.profileImage}" style="width:100%; height:100%; object-fit:cover;">`;
+      document.getElementById('profileAvatar').innerHTML = `<img src="${data.user.profileImage}">`;
       updateTopbarAvatar();
-      toast('Photo updated', 'success');
+      toast('Photo updated ✅', 'success');
     }
   } catch (e) {}
 }
@@ -1109,30 +1080,38 @@ function updateTopbarAvatar() {
   }
 }
 
-// ==================== UTILS ====================
+// ============================================================
+// UTILS
+// ============================================================
 function toast(msg, type = 'success') {
-  const toast = document.createElement('div');
-  toast.className = 'toast';
-  toast.innerHTML = `<span>${type === 'success' ? '✓' : '✗'}</span> ${msg}`;
-  document.getElementById('toastContainer').appendChild(toast);
-  setTimeout(() => toast.remove(), 3000);
+  const t = document.createElement('div');
+  t.className = `toast ${type}`;
+  t.innerHTML = `<span>${type === 'success' ? '✓' : '✗'}</span> ${msg}`;
+  document.getElementById('toastContainer').appendChild(t);
+  setTimeout(() => t.remove(), 3500);
 }
 
-function formatSize(bytes) {
-  if (!bytes) return '0 B';
-  if (bytes < 1024) return bytes + ' B';
-  if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
-  return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+function formatSize(b) {
+  if (!b) return '0 B';
+  if (b < 1024) return b + ' B';
+  if (b < 1048576) return (b / 1024).toFixed(1) + ' KB';
+  return (b / 1048576).toFixed(1) + ' MB';
 }
 
 function formatTime(s) {
-  if (!s) return '0:00';
+  if (!s || isNaN(s)) return '0:00';
   return Math.floor(s / 60) + ':' + String(Math.floor(s % 60)).padStart(2, '0');
 }
 
 function formatDate(d) {
+  if (!d) return '';
   return new Date(d).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 }
+
+// ============================================================
+// START
+// ============================================================
+init();
 </script>
 </body>
 </html>
