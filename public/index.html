@@ -582,6 +582,9 @@
 </div>
 
 <script>
+// ==================== RENDER BACKEND URL ====================
+const API_BASE_URL = 'https://pdfmaker-1jcx.onrender.com';
+
 // ==================== PROFESSIONAL JAVASCRIPT ====================
 let currentUser = null;
 let pinInput = '';
@@ -683,7 +686,10 @@ async function register() {
   if (profileFile) formData.append('profileImage', profileFile);
 
   try {
-    const res = await fetch('/api/auth/register', { method: 'POST', body: formData });
+    const res = await fetch(`${API_BASE_URL}/api/auth/register`, { 
+      method: 'POST', 
+      body: formData 
+    });
     const data = await res.json();
     if (data.success) {
       currentUser = data.user;
@@ -694,7 +700,7 @@ async function register() {
       toast(data.message, 'error');
     }
   } catch (e) {
-    toast('Registration failed', 'error');
+    toast('Registration failed: ' + e.message, 'error');
   }
 }
 
@@ -706,7 +712,7 @@ async function loginWithPin() {
   if (!/^\d{6}$/.test(pin)) return toast('PIN must be 6 digits', 'error');
 
   try {
-    const res = await fetch('/api/auth/login-by-identifier', {
+    const res = await fetch(`${API_BASE_URL}/api/auth/login-by-identifier`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ identifier, pin })
@@ -721,7 +727,7 @@ async function loginWithPin() {
       toast(data.message, 'error');
     }
   } catch (e) {
-    toast('Login failed', 'error');
+    toast('Login failed: ' + e.message, 'error');
   }
 }
 
@@ -750,7 +756,7 @@ function updatePinDots() {
 
 async function verifyPin() {
   try {
-    const res = await fetch('/api/auth/login', {
+    const res = await fetch(`${API_BASE_URL}/api/auth/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ pin: pinInput, userId: currentUser?._id })
@@ -779,7 +785,9 @@ function switchAccount() {
 }
 
 async function logout() {
-  await fetch('/api/auth/logout', { method: 'POST' });
+  try {
+    await fetch(`${API_BASE_URL}/api/auth/logout`, { method: 'POST' });
+  } catch (e) {}
   currentUser = null;
   pinInput = '';
   showScreen('homeScreen');
@@ -801,7 +809,10 @@ function uploadFiles(input, type) {
   const formData = new FormData();
   for (const f of input.files) formData.append('files', f);
 
-  fetch('/api/files/upload/' + type, { method: 'POST', body: formData })
+  fetch(`${API_BASE_URL}/api/files/upload/` + type, { 
+    method: 'POST', 
+    body: formData 
+  })
     .then(res => res.json())
     .then(data => {
       if (data.success) {
@@ -819,7 +830,7 @@ function uploadFiles(input, type) {
 // ==================== LOAD FILES ====================
 async function loadFiles(type) {
   try {
-    const res = await fetch('/api/files/' + type);
+    const res = await fetch(`${API_BASE_URL}/api/files/` + type);
     const data = await res.json();
     if (data.success) {
       if (type === 'image') renderImages(data.files);
@@ -829,7 +840,9 @@ async function loadFiles(type) {
         renderSongs(data.files);
       } else renderFiles(data.files);
     }
-  } catch (e) {}
+  } catch (e) {
+    console.log('Error loading files:', e);
+  }
 }
 
 function renderImages(files) {
@@ -956,7 +969,7 @@ function seekForward() { document.getElementById('audioPlayer').currentTime += 1
 async function deleteFile(id, type) {
   if (!confirm('Delete this file?')) return;
   try {
-    const res = await fetch('/api/files/' + id, { method: 'DELETE' });
+    const res = await fetch(`${API_BASE_URL}/api/files/` + id, { method: 'DELETE' });
     const data = await res.json();
     if (data.success) {
       toast('File deleted', 'success');
@@ -987,7 +1000,7 @@ function closeLightbox() {
 // ==================== PROFILE ====================
 async function loadProfile() {
   try {
-    const res = await fetch('/api/profile');
+    const res = await fetch(`${API_BASE_URL}/api/profile`);
     const data = await res.json();
     if (data.success) {
       const u = data.user;
@@ -1020,7 +1033,10 @@ async function saveProfile() {
   formData.append('email', document.getElementById('editEmail').value);
   
   try {
-    const res = await fetch('/api/profile/update', { method: 'PUT', body: formData });
+    const res = await fetch(`${API_BASE_URL}/api/profile/update`, { 
+      method: 'PUT', 
+      body: formData 
+    });
     const data = await res.json();
     if (data.success) {
       currentUser = { ...currentUser, ...data.user };
@@ -1047,7 +1063,7 @@ async function savePin() {
   if (newPin !== confirm) return toast('PINs do not match', 'error');
 
   try {
-    const res = await fetch('/api/profile/change-pin', {
+    const res = await fetch(`${API_BASE_URL}/api/profile/change-pin`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ currentPin: current, newPin })
@@ -1070,7 +1086,10 @@ async function updateProfileImage(input) {
   formData.append('profileImage', input.files[0]);
   
   try {
-    const res = await fetch('/api/profile/update', { method: 'PUT', body: formData });
+    const res = await fetch(`${API_BASE_URL}/api/profile/update`, { 
+      method: 'PUT', 
+      body: formData 
+    });
     const data = await res.json();
     if (data.success) {
       currentUser.profileImage = data.user.profileImage;
