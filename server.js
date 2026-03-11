@@ -36,11 +36,11 @@ app.use(session({
     touchAfter: 24 * 3600
   }),
   cookie: {
-    secure: process.env.NODE_ENV === 'production',
-    httpOnly: true,
-    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
-    maxAge: 30 * 24 * 60 * 60 * 1000
-  }
+  secure: true,
+  httpOnly: true,
+  sameSite: 'none',
+  maxAge: 30 * 24 * 60 * 60 * 1000
+}
 }));
 
 app.use('/api/auth', require('./routes/auth'));
